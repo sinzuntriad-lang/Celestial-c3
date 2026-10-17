@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: celestial
+    runtime: docker          # use "node" instead if you only need the bot (no media downloader)
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: ECLIPSE_DASHBOARD_API_KEY   # dashboard password (recommended: set your own)
+        sync: false
+      - key: BANAT_ALLOWED_USERS         # up to 2 Facebook user IDs, e.g. 1000123,1000456
+        sync: false
+      - key: BANAT_RESTRICT_REPLIES      # true = bot answers ONLY the allowed users
+        value: "false"
+      - key: BANAT_DEFAULT_ON
+        value: "false"
